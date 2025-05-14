@@ -15,7 +15,7 @@ const services = [
   },
   {
     title: "Dam Engineering",
-    color: "green-700",
+    color: "blue-700",
     summary:
       "Specialized services across the full lifecycle of dam projects, including safety, design, construction, and rehabilitation.",
     details: [
@@ -28,7 +28,7 @@ const services = [
   },
   {
     title: "Infrastructure Development",
-    color: "yellow-600",
+    color: "blue-700",
     summary:
       "Planning, engineering, and delivery of infrastructure projects supporting economic growth and public service delivery.",
     details: [
@@ -40,7 +40,7 @@ const services = [
   },
   {
     title: "Renewable Energy Solutions",
-    color: "purple-700",
+    color: "blue-700",
     summary:
       "Integrated renewable energy systems designed for efficiency, scalability, and reduced environmental impact.",
     details: [
@@ -52,7 +52,7 @@ const services = [
   },
   {
     title: "Environmental Management",
-    color: "teal-700",
+    color: "blue-700",
     summary:
       "Environmental protection and sustainability services that align infrastructure with regulatory compliance and global standards.",
     details: [
@@ -64,7 +64,7 @@ const services = [
   },
   {
     title: "Engineering Consultancy",
-    color: "gray-800",
+    color: "blue-700",
     summary:
       "Strategic and technical advisory services covering infrastructure feasibility, compliance, and lifecycle project management.",
     details: [

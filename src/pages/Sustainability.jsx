@@ -22,7 +22,7 @@ const Sustainability = () => {
             Our Commitment to a Sustainable Future
           </h1>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Damtech Nigeria Ltd. is committed to integrating sustainable development
+            DamTech Nigeria Ltd. is committed to integrating sustainable development
             practices into all aspects of its operations. Our ESG principles guide us
             in ensuring balance between economic growth, social equity, and environmental stewardship.
           </p>
@@ -72,7 +72,7 @@ const Sustainability = () => {
 
         {/* Environmental Stewardship */}
 <div>
-  <h2 className="text-2xl font-semibold text-blue-700 mb-6">Environmental Stewardship</h2>
+  <h2 className="text-2xl font-semibold text-green-600 mb-6">Environmental Stewardship</h2>
   <div className="grid md:grid-cols-2 gap-6">
     <div className="bg-green-50 p-5 rounded-lg shadow-sm border-l-4 border-green-600">
       <FaLeaf size={24} className="text-green-600 mb-2" />
@@ -111,7 +111,7 @@ const Sustainability = () => {
   <div className="grid md:grid-cols-3 gap-6">
     <div className="bg-blue-50 p-5 rounded-lg shadow-sm border-l-4 border-blue-600">
       <FaUsersCog size={24} className="text-blue-600 mb-2" />
-      <h4 className="font-semibold text-gray-800">Damtech Skills Academy</h4>
+      <h4 className="font-semibold text-gray-800">DamTech Skills Academy</h4>
       <p className="text-sm text-gray-700">
         Training and capacity-building for young engineers and technicians to enhance local talent and job creation.
       </p>
@@ -135,7 +135,7 @@ const Sustainability = () => {
 
 {/* Governance */}
 <div>
-  <h2 className="text-2xl font-semibold text-blue-700 mb-6 mt-12">Governance</h2>
+  <h2 className="text-2xl font-semibold text-gray-800 mb-6 mt-12">Governance</h2>
   <div className="grid md:grid-cols-3 gap-6">
     <div className="bg-gray-100 p-5 rounded-lg shadow-sm border-l-4 border-gray-600">
       <FaBalanceScale size={24} className="text-gray-700 mb-2" />

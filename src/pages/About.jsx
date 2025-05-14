@@ -21,13 +21,13 @@ const About = () => {
       <div className="max-w-5xl mx-auto">
         {/* Headline */}
         <h1 className="text-3xl md:text-4xl font-bold mb-6 text-blue-700">
-          About Damtech Nigeria Limited
+          About DamTech Nigeria Limited
         </h1>
 
         {/* Company Overview */}
         <div className="space-y-6 text-base md:text-lg leading-relaxed">
           <p>
-            <strong>Founded in 1992</strong>, Damtech Nigeria Limited has
+            <strong>Founded in 1992</strong>, DamTech Nigeria Limited has
             evolved into a premier provider of cutting-edge and sustainable
             solutions in water resource management, dam engineering, engineering
             consultancy, and renewable energy.

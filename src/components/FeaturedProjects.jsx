@@ -4,27 +4,27 @@ const projects = [
     scope:
       "Detailed study and design of irrigation infrastructure covering the three senatorial districts in Cross River State. This large-scale project demonstrates our capacity to handle complex irrigation planning.",
     client: "Cross River State Government, Ministry of Agriculture",
-    image: "/assets/project1.webp",
+    image: "/projects/project1.webp",
   },
   {
     title: "Emergency Preparedness Plan (EPP) for Tiga Dam, Kano State (2024)",
     scope:
       "Preparation of an Emergency Preparedness Plan (EPP) for Tiga Dam, a critical infrastructure project. This highlights our expertise in dam safety and risk management, essential for international standards.",
-    image: "/assets/project2.webp",
+    image: "/projects/project2.webp",
   },
   {
     title: "Design of the Master Plan for Flood Control in Aguata, Anambra State (2018 - Ongoing)",
     scope:
       "Detailed Design and Preparation of tender documents for a significant flood control project. This showcases our expertise in addressing critical environmental challenges.",
     client: "Anambra State Ministry of Works & Infrastructure",
-    image: "/assets/project3.webp",
+    image: "/projects/project3.webp",
   },
   {
     title: "Construction Supervision of Ijegu Yala Dam Project, Cross River State (2018 - Ongoing)",
     scope:
       "Construction supervision of the multipurpose Ijegu Yala Dam and associated structures. This demonstrates our experience in overseeing complex dam construction projects.",
     client: "Cross River Basin Development Authority",
-    image: "/assets/project4.webp",
+    image: "/projects/project4.webp",
   },
 ];
 

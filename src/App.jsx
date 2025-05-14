@@ -8,7 +8,9 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Sustainability from "./pages/Sustainability"
-// import Contact from "./pages/Contact";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfUse from "./pages/TermsOfUse";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/sustainability" element={<Sustainability />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
+           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+           <Route path="/terms-of-use" element={<TermsOfUse />} />
         </Routes>
       </div>
       <Footer />
