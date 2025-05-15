@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
 
 const allProjects = [
   {
@@ -9,7 +12,8 @@ const allProjects = [
     service: "Flood Control",
     scope: "Detailed flood control design and preparation of tender documents.",
     role: "Lead designer and consultant.",
-    outcome: "Enhanced preparedness for stormwater management in flood-prone communities.",
+    outcome:
+      "Enhanced preparedness for stormwater management in flood-prone communities.",
   },
   {
     title: "Ijegu Yala Dam Construction Supervision",
@@ -17,8 +21,10 @@ const allProjects = [
     client: "Cross River Basin Development Authority",
     year: "2018",
     service: "Dam Supervision",
-    scope: "Full supervision of the multi-purpose dam and appurtenant structures.",
-    outcome: "Quality assurance for a strategic water supply and irrigation facility.",
+    scope:
+      "Full supervision of the multi-purpose dam and appurtenant structures.",
+    outcome:
+      "Quality assurance for a strategic water supply and irrigation facility.",
   },
   {
     title: "Kwa Falls Dam Supervision",
@@ -27,7 +33,8 @@ const allProjects = [
     year: "2018",
     service: "Dam Supervision",
     scope: "Construction supervision for multi-purpose dam works.",
-    outcome: "Sustainable water infrastructure delivery in coastal rainforest terrain.",
+    outcome:
+      "Sustainable water infrastructure delivery in coastal rainforest terrain.",
   },
   {
     title: "Cross River State-Wide Irrigation Infrastructure Design",
@@ -44,7 +51,8 @@ const allProjects = [
     client: "Lower Niger River Basin Development Authority",
     year: "2018",
     service: "Irrigation Design",
-    scope: "Detailed design and tender documentation for dam and irrigation works.",
+    scope:
+      "Detailed design and tender documentation for dam and irrigation works.",
     outcome: "Irrigation blueprint for rural farming expansion.",
   },
   {
@@ -139,100 +147,152 @@ const allProjects = [
   },
 ];
 
-const unique = (key) => [...new Set(allProjects.map(p => p[key]))];
+const unique = (key) => [...new Set(allProjects.map((p) => p[key]))];
 
 const Projects = () => {
-  const [filters, setFilters] = useState({ year: "", location: "", service: "" });
+  const [filters, setFilters] = useState({
+    year: "",
+    location: "",
+    service: "",
+  });
 
   const handleFilterChange = (key, value) => {
     setFilters({ ...filters, [key]: value });
   };
 
-  const filteredProjects = allProjects.filter(p =>
-    (!filters.year || p.year === filters.year) &&
-    (!filters.location || p.location === filters.location) &&
-    (!filters.service || p.service === filters.service)
+  const filteredProjects = allProjects.filter(
+    (p) =>
+      (!filters.year || p.year === filters.year) &&
+      (!filters.location || p.location === filters.location) &&
+      (!filters.service || p.service === filters.service)
   );
 
   return (
-    <section className="bg-white text-gray-800 px-6 py-16">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12">
-          Our Project Portfolio
-        </h1>
+    <>
+      <Helmet>
+        <title>Our Projects | DamTech Nigeria Limited</title>
+        <meta
+          name="description"
+          content="Browse DamTech’s portfolio of major engineering projects across Nigeria: irrigation, dams, flood control, and more."
+        />
+        <link rel="canonical" href="https://www.damtechnigeria.com/projects" />
+        <meta
+          property="og:title"
+          content="Project Portfolio | DamTech Nigeria Limited"
+        />
+        <meta
+          property="og:description"
+          content="Discover our impactful engineering projects across Nigeria and West Africa."
+        />
+      </Helmet>
 
-        {/* Filters */}
-        <div className="grid md:grid-cols-3 gap-4 mb-10">
-          {["year", "location", "service"].map((key) => (
-            <select
-              key={key}
-              className="p-3 border rounded text-sm"
-              value={filters[key]}
-              onChange={e => handleFilterChange(key, e.target.value)}
-            >
-              <option value="">Filter by {key.charAt(0).toUpperCase() + key.slice(1)}</option>
-              {unique(key).map((v, i) => (
-                <option key={i} value={v}>{v}</option>
-              ))}
-            </select>
-          ))}
+<motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+      <section className="bg-white text-gray-800 px-6 py-16">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-4xl mt-10 font-bold text-center text-blue-700 mb-12">
+            Our Project Portfolio
+          </h1>
+
+          {/* Filters */}
+          <div className="grid md:grid-cols-3 gap-4 mb-10">
+            {["year", "location", "service"].map((key) => (
+              <select
+                key={key}
+                className="p-3 border rounded text-sm"
+                value={filters[key]}
+                onChange={(e) => handleFilterChange(key, e.target.value)}
+              >
+                <option value="">
+                  Filter by {key.charAt(0).toUpperCase() + key.slice(1)}
+                </option>
+                {unique(key).map((v, i) => (
+                  <option key={i} value={v}>
+                    {v}
+                  </option>
+                ))}
+              </select>
+            ))}
+          </div>
+
+          {/* Project Cards */}
+          <div className="flex flex-col items-center gap-8">
+            {filteredProjects.map((project, index) => (
+              <div
+                key={index}
+                className="w-full md:w-3/4 lg:w-2/3 bg-white rounded-xl shadow-lg border-t-4 border-blue-700 p-6 md:p-8 transition hover:shadow-xl space-y-4"
+              >
+                {/* Project Title */}
+                <div className="mb-2">
+                  <h2 className="text-2xl font-bold text-blue-800 leading-tight">
+                    {project.title}
+                  </h2>
+                  <div className="flex flex-wrap gap-2 mt-2 text-sm">
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                      {project.year}
+                    </span>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
+                      {project.location}
+                    </span>
+                    <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium">
+                      {project.service}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Info Blocks */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                      Client
+                    </h4>
+                    <p className="text-gray-800 text-sm leading-relaxed">
+                      {project.client}
+                    </p>
+                  </div>
+
+                  {project.role && (
+                    <div>
+                      <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                        Role
+                      </h4>
+                      <p className="text-gray-800 text-sm leading-relaxed">
+                        {project.role}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Scope */}
+                <div>
+                  <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                    Scope of Work
+                  </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {project.scope}
+                  </p>
+                </div>
+
+                {/* Outcome */}
+                <div>
+                  <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                    Outcome
+                  </h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {project.outcome}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* Project Cards */}
-        <div className="flex flex-col items-center gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-      key={index}
-      className="w-full md:w-3/4 lg:w-2/3 bg-white rounded-xl shadow-lg border-t-4 border-blue-700 p-6 md:p-8 transition hover:shadow-xl space-y-4"
-    >
-  {/* Project Title */}
-  <div className="mb-2">
-    <h2 className="text-2xl font-bold text-blue-800 leading-tight">{project.title}</h2>
-    <div className="flex flex-wrap gap-2 mt-2 text-sm">
-      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
-        {project.year}
-      </span>
-      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
-        {project.location}
-      </span>
-      <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium">
-        {project.service}
-      </span>
-    </div>
-  </div>
-
-  {/* Info Blocks */}
-  <div className="grid sm:grid-cols-2 gap-4">
-    <div>
-      <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">Client</h4>
-      <p className="text-gray-800 text-sm leading-relaxed">{project.client}</p>
-    </div>
-
-    {project.role && (
-      <div>
-        <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">Role</h4>
-        <p className="text-gray-800 text-sm leading-relaxed">{project.role}</p>
-      </div>
-    )}
-  </div>
-
-  {/* Scope */}
-  <div>
-    <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">Scope of Work</h4>
-    <p className="text-gray-700 text-sm leading-relaxed">{project.scope}</p>
-  </div>
-
-  {/* Outcome */}
-  <div>
-    <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">Outcome</h4>
-    <p className="text-gray-700 text-sm leading-relaxed">{project.outcome}</p>
-  </div>
-</div>
-
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+      </motion.div>
+    </>
   );
 };
 

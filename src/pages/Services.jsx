@@ -1,3 +1,6 @@
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
 const services = [
   {
     title: "Water Resources Engineering",
@@ -78,32 +81,75 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="bg-white text-gray-800 px-6 py-16">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-12">
-          Our Comprehensive Engineering Services
-        </h1>
+    <>
+      <Helmet>
+        <title>Our Services | Damtech Nigeria Limited</title>
+        <meta
+          name="description"
+          content="Explore Damtech's comprehensive engineering services in water resources, infrastructure, renewable energy, environmental management, and consultancy."
+        />
+        <link rel="canonical" href="https://www.damtechnigeria.com/services" />
+        <meta
+          property="og:title"
+          content="Engineering Services | Damtech Nigeria Limited"
+        />
+        <meta
+          property="og:description"
+          content="From dam design to solar energy and infrastructure development — Damtech leads with sustainable solutions."
+        />
+      </Helmet>
 
-        <div className="grid gap-10 md:grid-cols-2">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-lg shadow-sm border-l-4 p-6 border-blue-600"
-            >
-              <h2 className={`text-xl font-bold text-${service.color} mb-2`}>
-                {service.title}
-              </h2>
-              <p className="text-sm text-gray-700 mb-4">{service.summary}</p>
-              <div className="space-y-2 text-sm text-gray-600">
-                {service.details.map((detail, i) => (
-                  <p key={i}>• {detail}</p>
-                ))}
-              </div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.3,
+            },
+          },
+          exit: {
+            opacity: 0,
+            y: -20,
+            transition: { duration: 0.3 },
+          },
+        }}
+      >
+        <section className="bg-white text-gray-800 px-6 py-16">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl md:text-4xl mt-10 font-bold text-center text-blue-700 mb-12">
+              Our Comprehensive Engineering Services
+            </h1>
+
+            <div className="grid gap-10 md:grid-cols-2">
+              {services.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gray-50 rounded-lg shadow-sm border-l-4 p-6 border-blue-600"
+                  variants={{
+                    hidden: { opacity: 0, y: 40 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 className={`text-xl font-bold text-${service.color} mb-2`}>
+                    {service.title}
+                  </h2>
+                  <p className="text-sm text-gray-700 mb-4">{service.summary}</p>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    {service.details.map((detail, i) => (
+                      <p key={i}>• {detail}</p>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
+      </motion.div>
+    </>
   );
 };
 

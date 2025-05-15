@@ -1,4 +1,5 @@
 import { FaWater, FaCity, FaLeaf, FaSolarPanel, FaTools, FaMountain } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -42,8 +43,12 @@ const ServicesPreview = () => {
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true, amount: 0.3 }}
               className="bg-gray-50 p-6 rounded-lg shadow-md text-left hover:shadow-lg transition"
             >
               <div className="mb-4">{service.icon}</div>
@@ -51,7 +56,7 @@ const ServicesPreview = () => {
                 {service.title}
               </h3>
               <p className="text-gray-600 text-sm">{service.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-// Page Components (Create these files in /pages)
+// Page Components 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -15,6 +16,7 @@ import TermsOfUse from "./pages/TermsOfUse";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <AnimatePresence mode="wait">
     <Router>
       <ScrollToTop />
       <Navbar />
@@ -32,6 +34,7 @@ function App() {
       </div>
       <Footer />
     </Router>
+    </AnimatePresence>
     </div>
   );
 }
