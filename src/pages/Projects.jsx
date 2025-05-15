@@ -147,7 +147,13 @@ const allProjects = [
   },
 ];
 
-const unique = (key) => [...new Set(allProjects.map((p) => p[key]))];
+const unique = (key) => {
+  const values = [...new Set(allProjects.map((p) => p[key]))];
+  return key === "year"
+    ? values.sort((a, b) => parseInt(b) - parseInt(a)) // descending for years
+    : values.sort(); // default sort for others
+};
+
 
 const Projects = () => {
   const [filters, setFilters] = useState({
@@ -167,7 +173,7 @@ const Projects = () => {
       (!filters.service || p.service === filters.service)
   );
 
-  return (
+   return (
     <>
       <Helmet>
         <title>Our Projects | DamTech Nigeria Limited</title>
@@ -186,111 +192,128 @@ const Projects = () => {
         />
       </Helmet>
 
-<motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-      <section className="bg-white text-gray-800 px-6 py-16">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-4xl mt-10 font-bold text-center text-blue-700 mb-12">
-            Our Project Portfolio
-          </h1>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.25,
+            },
+          },
+          exit: {
+            opacity: 0,
+            y: -20,
+            transition: { duration: 0.3 },
+          },
+        }}
+      >
+        <section className="bg-white text-gray-800 px-6 py-16">
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-3xl md:text-4xl mt-10 font-bold text-center text-blue-700 mb-12">
+              Our Project Portfolio
+            </h1>
 
-          {/* Filters */}
-          <div className="grid md:grid-cols-3 gap-4 mb-10">
-            {["year", "location", "service"].map((key) => (
-              <select
-                key={key}
-                className="p-3 border rounded text-sm"
-                value={filters[key]}
-                onChange={(e) => handleFilterChange(key, e.target.value)}
-              >
-                <option value="">
-                  Filter by {key.charAt(0).toUpperCase() + key.slice(1)}
-                </option>
-                {unique(key).map((v, i) => (
-                  <option key={i} value={v}>
-                    {v}
+            {/* Filters */}
+            <div className="grid md:grid-cols-3 gap-4 mb-10">
+              {["year", "location", "service"].map((key) => (
+                <select
+                  key={key}
+                  className="p-3 border rounded text-sm"
+                  value={filters[key]}
+                  onChange={(e) => handleFilterChange(key, e.target.value)}
+                >
+                  <option value="">
+                    Filter by {key.charAt(0).toUpperCase() + key.slice(1)}
                   </option>
-                ))}
-              </select>
-            ))}
-          </div>
+                  {unique(key).map((v, i) => (
+                    <option key={i} value={v}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+              ))}
+            </div>
 
-          {/* Project Cards */}
-          <div className="flex flex-col items-center gap-8">
-            {filteredProjects.map((project, index) => (
-              <div
-                key={index}
-                className="w-full md:w-3/4 lg:w-2/3 bg-white rounded-xl shadow-lg border-t-4 border-blue-700 p-6 md:p-8 transition hover:shadow-xl space-y-4"
-              >
-                {/* Project Title */}
-                <div className="mb-2">
-                  <h2 className="text-2xl font-bold text-blue-800 leading-tight">
-                    {project.title}
-                  </h2>
-                  <div className="flex flex-wrap gap-2 mt-2 text-sm">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
-                      {project.year}
-                    </span>
-                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
-                      {project.location}
-                    </span>
-                    <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium">
-                      {project.service}
-                    </span>
+            {/* Project Cards */}
+            <div className="flex flex-col items-center gap-8">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="w-full md:w-3/4 lg:w-2/3 bg-white rounded-xl shadow-lg border-t-4 border-blue-700 p-6 md:p-8 transition hover:shadow-xl space-y-4"
+                  variants={{
+                    hidden: { opacity: 0, y: 40 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {/* Project Title */}
+                  <div className="mb-2">
+                    <h2 className="text-2xl font-bold text-blue-800 leading-tight">
+                      {project.title}
+                    </h2>
+                    <div className="flex flex-wrap gap-2 mt-2 text-sm">
+                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                        {project.year}
+                      </span>
+                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
+                        {project.location}
+                      </span>
+                      <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-medium">
+                        {project.service}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Info Blocks */}
-                <div className="grid sm:grid-cols-2 gap-4">
+                  {/* Info Blocks */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                        Client
+                      </h4>
+                      <p className="text-gray-800 text-sm leading-relaxed">
+                        {project.client}
+                      </p>
+                    </div>
+
+                    {project.role && (
+                      <div>
+                        <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                          Role
+                        </h4>
+                        <p className="text-gray-800 text-sm leading-relaxed">
+                          {project.role}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Scope */}
                   <div>
                     <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
-                      Client
+                      Scope of Work
                     </h4>
-                    <p className="text-gray-800 text-sm leading-relaxed">
-                      {project.client}
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {project.scope}
                     </p>
                   </div>
 
-                  {project.role && (
-                    <div>
-                      <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
-                        Role
-                      </h4>
-                      <p className="text-gray-800 text-sm leading-relaxed">
-                        {project.role}
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                {/* Scope */}
-                <div>
-                  <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
-                    Scope of Work
-                  </h4>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {project.scope}
-                  </p>
-                </div>
-
-                {/* Outcome */}
-                <div>
-                  <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
-                    Outcome
-                  </h4>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {project.outcome}
-                  </p>
-                </div>
-              </div>
-            ))}
+                  {/* Outcome */}
+                  <div>
+                    <h4 className="text-gray-500 text-xs uppercase font-bold mb-1">
+                      Outcome
+                    </h4>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {project.outcome}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </motion.div>
     </>
   );
