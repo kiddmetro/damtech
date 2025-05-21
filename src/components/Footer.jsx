@@ -21,7 +21,7 @@ const Footer = () => {
             <br />
             Plateau State, Nigeria
           </p>
-          <p className="mt-10">📞 +234-803-702-3388</p>
+          <p className="mt-10">📞 +234-803-632-6771</p>
           <p>
             ✉️{" "}
             <a

@@ -127,7 +127,7 @@ const Contact = () => {
               <p>
                 <strong>Phone:</strong>{" "}
                 <a href="tel:+2348037023388" className="text-blue-700">
-                  +234-803-702-3388
+                  +234-803-632-6771
                 </a>
               </p>
               <p>

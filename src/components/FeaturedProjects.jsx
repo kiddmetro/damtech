@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
-    title: "Study and Design of the Cross River State Wide Irrigation Infrastructure (2024 - Ongoing)",
+    title:
+      "Study and Design of the Cross River State Wide Irrigation Infrastructure (2024 - Ongoing)",
     scope:
       "Detailed study and design of irrigation infrastructure covering the three senatorial districts in Cross River State. This large-scale project demonstrates our capacity to handle complex irrigation planning.",
     client: "Cross River State Government, Ministry of Agriculture",
@@ -15,14 +17,16 @@ const projects = [
     image: "/projects-assets/project2.webp",
   },
   {
-    title: "Design of the Master Plan for Flood Control in Aguata, Anambra State (2018 - Ongoing)",
+    title:
+      "Design of the Master Plan for Flood Control in Aguata, Anambra State (2018 - Ongoing)",
     scope:
       "Detailed Design and Preparation of tender documents for a significant flood control project. This showcases our expertise in addressing critical environmental challenges.",
     client: "Anambra State Ministry of Works & Infrastructure",
     image: "/projects-assets/project3.webp",
   },
   {
-    title: "Construction Supervision of Ijegu Yala Dam Project, Cross River State (2018 - Ongoing)",
+    title:
+      "Construction Supervision of Ijegu Yala Dam Project, Cross River State (2018 - Ongoing)",
     scope:
       "Construction supervision of the multipurpose Ijegu Yala Dam and associated structures. This demonstrates our experience in overseeing complex dam construction projects.",
     client: "Cross River Basin Development Authority",
@@ -75,6 +79,21 @@ const FeaturedProjects = () => {
             </div>
           ))}
         </div>
+
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 1.3 }}
+          viewport={{ once: true }}
+        >
+          <Link
+            to="/projects"
+            className="text-blue-600 text-lg font-semibold hover:underline"
+          >
+            View more Projects →
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

@@ -23,13 +23,13 @@ const teamMembers = [
     name: "ENGR. ISHAKU PINDAR",
     role: "Principal Water Resources Engineer",
     image: "/profileimg/team3.jpg",
-    bio: `Expert in dam engineering, water footprint analysis, and infrastructure development. COREN-registered and NIEE fellow. Holds degrees in Civil & Water Resources Engineering and Environmental Resource Management.`,
+    bio: `Engr. Ishaku Pindar is a COREN Registered Engineer in water resource management and infrastructure development across Nigeria. He holds degrees in Civil and Water Resources Engineering as well as Environmental Resource Management. A COREN-registered engineer and fellow of the Nigerian Institution of Environmental Engineers (NIEE), he specializes in dam engineering, water footprint assessment, and water infrastructure design and supervision.`,
   },
   {
-    name: "ENGR. AZUBUIKE EDEBEATU",
+    name: "ENGR. CHARLES AZUBUIKE EDEBEATU",
     role: "Project Management Lead",
     image: "/profileimg/team4.jpg",
-    bio: `Leads multidisciplinary engineering project execution at DamTech. Specializes in planning, resource coordination, and quality control.`,
+    bio: `Engr. Charles Azubuike Edebeatu brings over two decades of expertise in power systems, telecommunications, and renewable energy infrastructure. A graduate of UNN and UNILAG, he has led large-scale energy projects, including NIPP and the Energizing Education Programme. A COREN-registered engineer and FNIPE Fellow, he excels in execution, regulatory compliance, and stakeholder coordination.`,
   },
   {
     name: "AUGUSTINE ABANI OKEREKE",
